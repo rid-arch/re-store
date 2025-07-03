@@ -1,0 +1,17 @@
+{
+  "folders": [
+	{
+		"path": "../crud-auth"
+	},
+	{
+		"path": "../crud-auth-fe"
+	},
+	{
+		"path": "../../../laragon/www/webiot"
+	},
+	{
+		"path": "E:/iseng"
+	}
+],
+  "settings": {}
+}
