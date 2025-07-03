@@ -3,32 +3,32 @@ const API_URL = 'https://rifkira.psl17.my.id/api';
 // =====================
 // CEK AUTENTIKASI UNIVERSAL UNTUK index.html
 // =====================
-// (function () {
-//   const token = localStorage.getItem('token');
-//   const path = window.location.pathname;
-//   const filename = path.split('/').pop();
+(function () {
+  const token = localStorage.getItem('token');
+  const path = window.location.pathname;
+  const filename = path.split('/').pop();
 
-//   const isAdminPage = path.includes('/admin/');
-//   const isUserPage = !isAdminPage;
+  const isAdminPage = path.includes('/admin/');
+  const isUserPage = !isAdminPage;
 
-//   if (!token) {
-//     // Belum login
-//     if (isAdminPage) {
-//       window.location.replace('../login.html');
-//     } else {
-//       window.location.replace('login.html');
-//     }
-//   } else {
-//     // Sudah login, batasi akses
-//     const email = localStorage.getItem('email');
-//     if (isAdminPage && email !== 'admin@mail.com') {
-//       window.location.replace('../index.html');
-//     }
-//     if (isUserPage && email === 'admin@mail.com') {
-//       window.location.replace('admin/dashboard.html');
-//     }
-//   }
-// })();
+  if (!token) {
+    // Belum login
+    if (isAdminPage) {
+      window.location.replace('../login.html');
+    } else {
+      window.location.replace('login.html');
+    }
+  } else {
+    // Sudah login, batasi akses
+    const email = localStorage.getItem('email');
+    if (isAdminPage && email !== 'admin@mail.com') {
+      window.location.replace('../index.html');
+    }
+    if (isUserPage && email === 'admin@mail.com') {
+      window.location.replace('admin/dashboard.html');
+    }
+  }
+})();
 
 
 // =====================
