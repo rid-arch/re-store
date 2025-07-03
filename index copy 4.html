@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Modern | Frontend Baru</title>
+    
+    <!-- Memuat Font dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Memuat Tailwind CSS untuk styling cepat dan modern -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://rifkira.psl17.my.id/js/app.js"></script>
+    
+    <!-- Konfigurasi kustom untuk Tailwind (opsional) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: '#1E40AF', // Biru tua
+              secondary: '#3B82F6', // Biru lebih cerah
+              accent: '#F59E0B', // Kuning/Gold
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+        /* Menambahkan beberapa style kustom kecil */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1920x1080/a7a7a7/ffffff?text=Koleksi+Pilihan');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">TokoModern</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-primary transition">Beranda</a>
+                <a href="#produk" class="text-gray-600 hover:text-primary transition">Produk</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition">Diskon</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition">Kontak</a>
+            </div>
+            <a href="#" class="hidden md:block bg-primary text-white px-5 py-2 rounded-full hover:bg-secondary transition">
+                Login
+            </a>
+            <!-- Tombol Hamburger untuk mobile akan kita tambahkan nanti -->
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg h-[70vh] flex items-center justify-center text-white">
+            <div class="text-center max-w-3xl mx-auto px-4">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Koleksi Terbaru 2025</h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-8">Temukan produk yang mendefinisikan gaya Anda. Kualitas terbaik, desain modern.</p>
+                <a href="#produk" class="bg-accent text-white font-bold px-8 py-3 rounded-full hover:opacity-90 transition transform hover:scale-105">
+                    Jelajahi Produk
+                </a>
+            </div>
+        </section>
+
+        <!-- Bagian Produk -->
+        <section id="produk" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800">Produk Pilihan Kami</h2>
+                    <p class="text-gray-500 mt-2">Dibuat dengan kualitas dan gaya terbaik.</p>
+                </div>
+                
+                <!-- Di sinilah produk dari "API" akan ditampilkan -->
+                <div id="productList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Konten produk akan di-generate oleh JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action (CTA) Section -->
+        <section class="bg-secondary text-white">
+            <div class="container mx-auto px-6 py-16 text-center">
+                <h2 class="text-3xl font-bold mb-2">Jangan Ketinggalan Info!</h2>
+                <p class="mb-6">Daftarkan email Anda untuk mendapatkan info diskon dan produk terbaru.</p>
+                <div class="flex justify-center">
+                    <input type="email" placeholder="Masukkan email Anda" class="px-4 py-3 rounded-l-full w-full max-w-sm text-gray-800 focus:outline-none">
+                    <button class="bg-accent px-6 py-3 rounded-r-full font-bold hover:opacity-90 transition">Daftar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 TokoModern. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+
+    <!-- =================================================================== -->
+    <!-- JAVASCRIPT - Bagian Paling Penting untuk Konsep Frontend & API -->
+    <!-- =================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- BAGIAN 1: SIMULASI API ---
+            // Bayangkan ini adalah "Dapur" atau "Backend" milik orang lain.
+            // Kita tidak bisa melihat isinya, kita hanya bisa memanggilnya.
+            // Fungsi ini mengembalikan data, persis seperti API asli.
+            async function simulasiApiFetchProducts() {
+                console.log("Memanggil API (simulasi)... Mohon tunggu...");
+
+                // Kita buat janji (Promise) untuk mensimulasikan waktu tunggu jaringan
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        console.log("API merespon! Mengirim data produk...");
+                        
+                        // Ini adalah data yang DIKEMBALIKAN oleh API.
+                        // Strukturnya sengaja dibuat mirip dengan API asli Anda: { data: [...] }
+                        const dataFromApi = {
+                            data: [
+                                { id: 1, name: "Jam Tangan Cerdas V.2", price: 1850000, image: "https://placehold.co/600x600/1E40AF/ffffff?text=Jam+Cerdas" },
+                                { id: 2, name: "Sepatu Lari Aerodinamis", price: 1250000, image: "https://placehold.co/600x600/3B82F6/ffffff?text=Sepatu+Lari" },
+                                { id: 3, name: "Headphone Peredam Bising", price: 2100000, image: "https://placehold.co/600x600/F59E0B/ffffff?text=Headphone" },
+                                { id: 4, name: "Tas Ransel Urban Explorer", price: 950000, image: "https://placehold.co/600x600/10B981/ffffff?text=Tas+Ransel" },
+                            ]
+                        };
+                        
+                        resolve(dataFromApi);
+                    }, 1500); // Waktu tunggu 1.5 detik
+                });
+            }
+
+
+            // --- BAGIAN 2: LOGIKA FRONTEND ---
+            // Ini adalah kode yang berjalan di "Restoran" Anda.
+            // Tugasnya adalah memanggil API, menerima data, dan menampilkannya.
+            const productListContainer = document.getElementById('productList');
+
+            async function tampilkanProduk() {
+                // Langkah 1: Tampilkan pesan "Loading" agar pengguna tahu ada proses.
+                productListContainer.innerHTML = `<p class="col-span-full text-center text-gray-500">Sedang memuat produk...</p>`;
+                
+                try {
+                    // Langkah 2: Panggil "API" dan tunggu sampai data kembali.
+                    const responseData = await simulasiApiFetchProducts();
+                    
+                    // Langkah 3: Dari dokumentasi, kita tahu produk ada di dalam `responseData.data`
+                    const products = responseData.data;
+                    
+                    // Langkah 4: Kosongkan pesan "Loading"
+                    productListContainer.innerHTML = '';
+
+                    // Langkah 5: Loop setiap produk dan buat kartu HTML untuk masing-masing.
+                    products.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300';
+                        
+                        productCard.innerHTML = `
+                            <div class="h-64 bg-gray-200">
+                                <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">${product.name}</h3>
+                                <p class="text-primary font-semibold text-2xl mb-4">Rp ${product.price.toLocaleString('id-ID')}</p>
+                                <button class="w-full bg-primary text-white py-2 rounded-full hover:bg-secondary transition font-bold">
+                                    Lihat Detail
+                                </button>
+                            </div>
+                        `;
+                        
+                        productListContainer.appendChild(productCard);
+                    });
+
+                } catch (error) {
+                    // Jika terjadi error saat memanggil API
+                    console.error("Gagal mengambil data:", error);
+                    productListContainer.innerHTML = `<p class="col-span-full text-center text-red-500">Maaf, gagal memuat produk.</p>`;
+                }
+            }
+
+            // Panggil fungsi utama untuk memulai semuanya!
+            tampilkanProduk();
+        });
+    </script>
+
+</body>
+</html>
